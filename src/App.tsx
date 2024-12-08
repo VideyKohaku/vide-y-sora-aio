@@ -1,7 +1,7 @@
 import React from "react";
 import { AppRouter } from "./routes/AppRouter";
 // import "./App.css";
-import { Container } from "@mui/material";
+import { Box, Container } from "@mui/material";
 
 const App: React.FC = () => {
   return (
@@ -20,6 +20,24 @@ const App: React.FC = () => {
       }}
       disableGutters={true}
     >
+      <Box
+        className="banner"
+        sx={{
+          backgroundColor: "primary.main",
+          color: "white",
+          fontSize: "1.5rem",
+          fontWeight: "bold",
+          padding: "0.5rem",
+          boxSizing: "border-box",
+          width: "100vw",
+          borderRadius: "1rem",
+          textAlign: "center",
+          height: "8rem",
+
+          position: "fixed",
+          zIndex: "-100",
+        }}
+      />
       <AppRouter />
     </Container>
   );
