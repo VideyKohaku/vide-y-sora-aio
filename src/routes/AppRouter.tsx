@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { NavigationBar } from "../components/Navigation";
+import NavigationBar from "../components/NavigationBar/NavigationBar.tsx";
 import RandomizerPage from "../pages/RandomizerPage/RandomizerPage";
 import { Drawer } from "@mui/material";
 

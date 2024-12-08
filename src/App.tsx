@@ -21,14 +21,16 @@ const App: React.FC = () => {
       disableGutters={true}
     >
       <Box
+        className="banner"
         sx={{
-          backgroundColor: "secondary.main",
+          backgroundColor: "primary.main",
           color: "white",
           fontSize: "1.5rem",
           fontWeight: "bold",
           padding: "0.5rem",
           boxSizing: "border-box",
-          width: "100%",
+          width: "100vw",
+          borderRadius: "1rem",
           textAlign: "center",
           height: "8rem",
 

@@ -6,9 +6,7 @@ interface INavigationBarProps {
   setOpenDrawer: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const NavigationBar: React.FC<INavigationBarProps> = ({
-  setOpenDrawer,
-}) => {
+const NavigationBar: React.FC<INavigationBarProps> = ({ setOpenDrawer }) => {
   return (
     <Stack
       direction="row"
@@ -24,21 +22,24 @@ export const NavigationBar: React.FC<INavigationBarProps> = ({
     >
       <Box
         sx={{
-          color: "white",
+          color: "black",
           fontSize: "1.5rem",
           fontWeight: "bold",
+          fontFamily: "typography.fontFamily",
         }}
       >
-        Logo
+        Vide y Sora
       </Box>
       <Box>
         <IconButton
           onClick={() => setOpenDrawer((prev: boolean): boolean => !prev)}
           sx={{ color: "white" }}
         >
-          <MenuRoundedIcon sx={{ color: "white" }} />
+          <MenuRoundedIcon sx={{ color: "black" }} />
         </IconButton>
       </Box>
     </Stack>
   );
 };
+
+export default NavigationBar;

@@ -1,10 +1,21 @@
 import { Box, Stack } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 
 const colors = ["Primary", "Secondary", "Error", "Warning", "Info", "Success"];
 
-const randomColor = (): string => {
-  return colors[Math.floor(Math.random() * colors.length)].toLowerCase();
+const randomColor = (): (() => string | null) => {
+  let lastColor: string | null = null;
+  return () => {
+    let newColor = lastColor;
+    console.log("last:", lastColor);
+    while (newColor === lastColor) {
+      newColor =
+        colors[Math.floor(Math.random() * colors.length)].toLowerCase();
+    }
+    console.log("new: ", newColor);
+    lastColor = newColor;
+    return newColor;
+  };
 };
 
 const mockList = [
@@ -65,7 +76,17 @@ const mockList = [
 ];
 
 const PlaceList: React.FC = () => {
-  console.log(`${randomColor()}.main.light`);
+  console.log(`${randomColor()}.light`);
+  const [bColors, setBColors] = React.useState<string[]>([]);
+
+  useEffect(() => {
+    const initColors = mockList.map(() => {
+      console.log(`${randomColor()()}.light`);
+      return `${randomColor()()}.light`;
+    });
+    setBColors(initColors);
+  }, []);
+
   return (
     <Stack
       direction="column"
@@ -82,14 +103,14 @@ const PlaceList: React.FC = () => {
         marginTop: "1rem",
       }}
     >
-      {mockList.map((list) => {
+      {mockList.map((list, idx) => {
         return (
           <Box
             key={list.name}
-            className={`${randomColor()}.light`}
+            className={`${bColors[idx]}`}
             sx={{
               width: "100%",
-              backgroundColor: `${randomColor()}.light`,
+              backgroundColor: `${bColors[idx]}`,
               borderRadius: "0.5rem",
               padding: "0.5rem",
               boxSizing: "border-box",
